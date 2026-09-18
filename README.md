@@ -1,44 +1,57 @@
-# GoT Project
+# TenderTrack
 
-Open tenders, RFPs, RFQs, EOIs and purchase orders in Guyana, tracked across government and private sector sources. Built for suppliers and contractors who want to bid on or fulfill Guyanese procurement opportunities.
+TenderTrack is a procurement opportunity tracker covering Guyana and the United States. It started on September 13, 2026 as a Guyana-only snapshot of government and private-sector open tenders, and on September 18, 2026 it was rebuilt and rebranded as TenderTrack with a second country tab for the USA. The original Guyana dashboard was retired the same day; TenderTrack is the only live dashboard.
 
-## What is here
+This repository holds the data files behind the dashboard. The dashboard itself is published separately. Everything here is a dated snapshot, not a live feed.
 
-- **Guyana Open Government and Private Sector Orders.xlsx** - the full workbook. One row per opportunity with buyer, tender reference, title, category, quantity or scope, submission deadline, official notice link and bidder notes. A second tab holds leads whose deadlines still need confirmation.
-- **data/guyana-open-tenders.csv** - the same data as a flat CSV.
-- **research/** - dated research notes showing what was verified, from which source, and what could not be confirmed.
+## Guyana snapshot (September 13, 2026)
 
-## Coverage
+The original research covered 46 open opportunities (28 government, 18 private oil-and-gas) plus 8 leads still needing deadline confirmation. Files from that pass are unchanged:
 
-As of 13 September 2026 the tracker holds 47 open opportunities:
+- `Guyana Open Government and Private Sector Orders.xlsx` (original workbook)
+- `data/guyana-open-tenders.csv`
+- `research/all-open-orders-2026-09-13.md`
+- `research/government-refresh-2026-09-13.md`
 
-- 28 government notices (e-procure portal, DPI adverts, GPL, Guyana Water Inc, CHPA, GUYOIL, ministries)
-- 18 private oil and gas supply chain notices (Local Content Register: GYSBI, SBM Offshore, Oceaneering, Halliburton, CNOOC, Tenaris, Champion X, G-Boats)
-- 1 multilateral notice (UNDP Guyana)
+Headline items from that date: World Bank-funded Mahaica Bridge to Abary Bridge road works (due Oct 2, international bidders eligible), five CDB water transmission-mains packages (due Oct 6), and the first open Guyana government oil-and-gas tender seen (GUYOIL annual petroleum products RFP for gasoline/gasoil/ULSD/Jet A-1, due Sept 29). No open pharma tenders; the Ministry of Health buys via a prequalified-supplier list. Foreign bidders must register on the NPTAB portal at least 7 days before bidding.
 
-## Live dashboard
+## USA dataset (verified September 18, 2026)
 
-An interactive dashboard with buyer type filtering and the same 47 rows is published separately.
+The USA tab adds 95 records verified on September 18, 2026:
 
-## How to read the data
+- 15 verified open federal solicitations (SAM.gov)
+- 10 SBA SubNet subcontracting notices (the complete live listing that day)
+- 2 open K-12 school-district technology bids: Clarkston Community Schools, Michigan (classroom technology for the new junior high, bids due Sept 22) and Calcasieu Parish School Board, Louisiana (E-Rate wireless access points, digital proposals due Sept 30, sealed hard copy due Oct 2). Both have scope limits; they are network and classroom tech, not student-device refreshes.
+- 40 recent federal awards (usaspending.gov)
+- 12 DHS acquisition forecasts (forecasts are plans, not open bids)
+- 34 winning contractors
+- All 50 state procurement routes, with 45 verified state portal links. Louisiana, Mississippi, South Carolina, South Dakota, and Wyoming entries are blank because they were not safely verified; 8 more are labeled access-unverified.
+- A SAM.gov bidding roadmap for first-time federal bidders.
 
-- Deadlines are in Guyana time (AST, UTC-4).
-- Where a quantity or scope column says the detail is not publicly stated, that information only exists inside the paid or collected bid documents. Nothing here is invented.
-- Rows flagged as unverified need a direct check of the notice page before acting. Government adverts published as scanned images and some JS rendered portals could not be machine read.
-- Private oil and gas bidders generally need a Guyana Local Content Certificate (or proof of application) under the Local Content Act 2021.
-- Foreign government bidders generally must register on the NPTAB e-procure portal at least 7 days before bidding.
+Data files:
 
-## Refreshing
+- `USA Government Contract Opportunities.xlsx` (full USA workbook)
+- `data/usa-opportunities-2026-09-18.csv`
+- `data/usa-subcontracts-2026-09-18.csv`
+- `data/usa-state-portals-2026-09-18.csv`
+- `research/usa-2026-09-18/VERIFICATION_LOG.md` (per-record verification notes and caveats)
+- `research/usa-2026-09-18/verification-report-20260918.md`
 
-This is a point in time snapshot. Tenders close, new ones publish daily. Re-run the source sweep (eprocure.gov.gy, DPI adverts, gplinc.com/bids, guyanawaterinc.com/procurement, chpa.gov.gy, guyoil.gy, lcregister.petroleum.gov.gy/opportunities, UNDP procurement notices) before acting on any row.
+## State education project sweep (verified September 18, 2026)
 
-## USA opportunities (added 18 September 2026)
+A 10-state sweep (CA, TX, FL, NY, IL, PA, OH, GA, NC, MI) verified 16 open K-12 and higher-education construction and facilities bids, deadlines September 22 through October 29, 2026, from Florida, New York, North Carolina, Michigan, California, Illinois, and Pennsylvania.
 
-**USA Government Contract Opportunities.xlsx** - verified federal snapshot plus a new K-12 school IT-hardware tab. Research date 18 September 2026. Contains 13 verified open federal notices, 10 open SBA SubNet subcontract notices, all 50 state procurement portals mapped, and a dedicated K-12 IT Hardware sheet.
+Data files:
 
-The K-12 tab holds 2 school-district technology-hardware solicitations that met the verification bar on the research date:
+- `data/state-education-bids-2026-09-18.json`
+- `research/state-education-sweep/excluded-20260918.md` (near-misses with URL and reason)
 
-- Calcasieu Parish School Board (Louisiana), E-Rate Yr. 30 RFP 330-WAP for wireless access points. Digital proposals due September 30, 2026 noon CST; sealed hard copy due October 2, 2026 noon CST. Note: network infrastructure hardware, not end-user devices; E-Rate SPIN and FCC registration required.
-- Clarkston Community Schools (Michigan), 2022 Bond Program classroom technology for New Clarkston Junior High (RFP-CLA-260000002552-1). Bids due September 22, 2026 12:00 PM EST. Note: classroom technology for new construction; the ad does not confirm end-user laptops, Chromebooks, desktops, printers, or copiers.
+Honest coverage notes:
 
-Why only 2: the 2026 school device refresh cycle ran February to July, so by mid-September most device bids are closed. Most districts buy computers and printers through state contracts (for example DIR in Texas), purchasing cooperatives, board-approved vendor lists, and RFQs to approved suppliers rather than public RFPs. The next open-bid wave is expected January to April 2027. Full method, caveats, and the excluded near-miss list are in research/usa-opportunities-verification-2026-09-18.md, and the machine-readable records are in data/usa/k12-it-hardware.json.
+- This is a dated snapshot, not a live feed. Deadlines move.
+- Several federal deadlines fall between September 21 and 25, 2026 and must be rechecked before use.
+- New York and North Carolina records show dates only on the official listings; no submission times.
+- Michigan and California records are official advertisement documents (SIGMA ad, LAUSD RAMP form) read via mirror; verify each on the SIGMA or LAUSD supplier portal before bidding.
+- Zero verified open IT-hardware bids (laptops, Chromebooks, desktops, printers, copiers) in all 10 sweep states. Districts overwhelmingly buy devices through master and cooperative contracts (TX DIR, REMC Save, MEEC), not open bids; fall refresh buying already happened over summer. The category is left empty on purpose, not padded.
+- Zero open prime or subcontracting notices on official state portals.
+- Zero verified records for Ohio and Georgia.
